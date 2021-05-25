@@ -1,28 +1,56 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <v-app>
+            <Navbar/>
+            <!-- <v-content style="background:#18191a"> -->
+            <v-content class="grey lighten-2">
+                <v-container fluid>
+                    <v-responsive class="pa-2 overflow-y-auto" v-scroll:#scroll-target="onScroll">
+                        <router-view>
+                        </router-view>
+                    </v-responsive>
+                </v-container>
+            </v-content>
+            <!-- <Snackbar/> -->
+        </v-app>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from "./components/Navbar";
+// import Snackbar from "./components/Snackbar";
+import axios from 'axios';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    name: "Main",
+    components: {
+        Navbar,
+        // Snackbar,
+    },
+    methods:{
+        onScroll (e) {
+            this.offsetTop = e.target.scrollTop
+        },
+    },
+    async beforeMount(){
+        let form = {
+            name: 'Luiz',
+            description: 'Developer'
+        }
+
+        await axios.get('http://localhost:3000/api/init',form).then(response=>{
+            
+            this.$store.state.menu = response.data.menu;
+            this.$store.state.usuario = response.data.usuario;
+            this.$store.state.notas = response.data.notas;
+            
+            console.log(response.data.notas)
+
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss" scoped></style>
