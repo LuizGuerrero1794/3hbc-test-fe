@@ -7,5 +7,14 @@ export default {
     },
     delete(route, id){
         return axios.delete(`${base+route}/${id}`);
+    },
+    show(route,id){
+        return axios.get(`${base+route}/${id}`);
+    },
+    new(route,data){
+        return axios.post(`${base+route}`,data);
+    },
+    update(route,id, data){
+        return axios.put(`${base+route}/${id}`, data);
     }
 }

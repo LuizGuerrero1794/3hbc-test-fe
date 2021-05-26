@@ -38,7 +38,24 @@
         return this.$store.state.notas;
       }
     },
-    beforeMount(){
+    async beforeMount(){
+      // const id = 4;
+      // Api.show(`api/notas`,id).then(response=>{
+      //   console.log(response);
+      // })
+
+      // Api.delete(`api/notas`,id).then(response=>{
+      //   console.log(response);
+      // })
+
+      // await Api.new(`api/notas`,{nombre:'Luiz',descripcion:'Developer'}).then(response=>{
+      //   console.log(response);
+      // })
+
+      // await Api.update(`api/notas`,id,{ descripcion: 'Developer Web' }).then(response=>{
+      //   console.log(response);
+      // })
+
       this.load();
     },
     methods:{
