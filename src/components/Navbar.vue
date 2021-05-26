@@ -116,9 +116,6 @@ export default {
         count_notifications(){
             return this.$store.state.count_notifications;
         },
-        // usuario() {
-        //     return this.$store.state.usuario;
-        // },
         sistema(){
             return this.$store.state.sistema;
         },

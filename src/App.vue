@@ -19,7 +19,6 @@
 <script>
 import Navbar from "./components/Navbar";
 // import Snackbar from "./components/Snackbar";
-import axios from 'axios';
 
 export default {
     name: "Main",
@@ -32,23 +31,8 @@ export default {
             this.offsetTop = e.target.scrollTop
         },
     },
-    async beforeMount(){
-        let form = {
-            name: 'Luiz',
-            description: 'Developer'
-        }
-
-        await axios.get('http://localhost:3000/api/init',form).then(response=>{
-            
-            this.$store.state.menu = response.data.menu;
-            this.$store.state.usuario = response.data.usuario;
-            this.$store.state.notas = response.data.notas;
-            
-            console.log(response.data.notas)
-
-        }).catch(err=>{
-            console.log(err);
-        })
+    beforeMount(){
+        
     }
 };
 </script>
