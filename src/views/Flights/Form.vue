@@ -124,6 +124,16 @@
 
                         </v-select>
                     </v-col>
+                    <v-col cols="12" class="ma-0 pa-0">
+                        <v-select 
+                        v-model="form.destination_id"
+                        :items="airports" item-text="name"
+                        item-value="id" label="DESTINO"
+                        dense outlined
+                        >
+
+                        </v-select>
+                    </v-col>
                 </v-form>
             </v-card-text>
             <v-card-actions class="pa-4">
@@ -153,7 +163,8 @@
         computed:{
             ...mapState({
                 rules: state => state.rules,
-                airlines: state => state.airlines
+                airlines: state => state.airlines,
+                airports: state => state.airports
             })
         },
         beforeMount(){

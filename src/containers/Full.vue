@@ -3,7 +3,7 @@
         <Navbar/>
         <!-- <Sidebar/> -->
         <v-main>
-            <v-container fluid style="max-width: 100%">
+            <v-container fluid class="pa-12" style="max-width: 100%">
                 <router-view></router-view>
             </v-container>
         </v-main>

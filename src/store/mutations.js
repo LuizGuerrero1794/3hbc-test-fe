@@ -11,5 +11,8 @@ export default {
     },
     SET_AIRLINES(state, data){
         state.airlines = data;
+    },
+    SET_AIRPORTS(state, data){
+        state.airports = data;
     }
 }

@@ -61,5 +61,10 @@ export default{
         await axios.get('/api/airlines').then( (response) => {
             return context.commit('SET_AIRLINES', response.data.items);
         })
+    },
+    async getAirports(context){
+        await axios.get('/api/airports').then( (response) => {
+            return context.commit('SET_AIRPORTS', response.data.items);
+        })
     }
 }

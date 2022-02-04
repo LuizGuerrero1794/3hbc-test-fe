@@ -17,7 +17,7 @@
                 >
                 <template v-slot:item.action="{ item }">
                     <Form :item="item" @load="load"/>
-                    <DialogDelete :item="item" />
+                    <DialogDelete :item="item" @load="load"/>
                 </template>
             </v-data-table>
         </v-card-text>

@@ -25,4 +25,5 @@ export default{
     email: value => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || 'EL CORREO ELECTRONICO ES INVALIDO',
   },
   airlines: [],
+  airports: [],
 }

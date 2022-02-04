@@ -39,7 +39,7 @@
     import axios from '@/plugins/axios'
 
     export default{
-        name: 'DialogDeleteFlight',
+        name: 'DialogDeleteAirports',
         props: ['item'],
         data: () => ({
             dialog: false,
@@ -49,7 +49,7 @@
                 this.dialog = false;
             },
             trash () {
-                axios.delete(`/api/airlines/${this.item.id}`)
+                axios.delete(`/api/airports/${this.item.id}`)
                     .then( (response) => {
                         if ( response.data.success ){
                             alert(response.data.message)

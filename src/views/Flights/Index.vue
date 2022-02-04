@@ -17,7 +17,7 @@
                 >
                 <template v-slot:item.action="{ item }">
                     <Form :item="item" @load="load"/>
-                    <DialogDelete :item="item" />
+                    <DialogDelete :item="item" @load="load" />
                 </template>
             </v-data-table>
         </v-card-text>
@@ -41,6 +41,7 @@
                     {text: 'ARRIVAL TIME', value: 'arrival_time', hide: false},
                     {text: 'DEPARTURE TIME', value: 'departure_time', hide: false},
                     {text: 'AIRLINE', value: 'airline.name', hide: false},
+                    {text: 'AIRPORT', value: 'airport.name', hide: false},
                     {text: 'ACTIONS', value: 'action', sortable: false},
                 ],
                 data: [],
@@ -49,6 +50,7 @@
         beforeMount(){
             this.load();
             this.$store.dispatch('getAirlines');
+            this.$store.dispatch('getAirports');
         },
         methods:{
             async load(){

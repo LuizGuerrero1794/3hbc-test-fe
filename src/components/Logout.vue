@@ -28,7 +28,7 @@
                     <v-icon class="mr-2">mdi-close</v-icon>
                     <span class="font-weight-bold">CANCELAR</span>
                 </v-btn>
-                <v-btn color="primary" outlined @click.prevent="cerrarSesion()">
+                <v-btn color="primary" outlined @click.prevent="logout">
                     <v-icon class="mr-2">mdi-check</v-icon>
                     <span class="font-weight-bold">ACEPTAR</span>
                 </v-btn>
@@ -39,14 +39,14 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '@/plugins/axios'
   export default {
     data: ()  => ({
       dialog: false,
     }),
     methods: {
-      cerrarSesion() {
-        axios.post("/logout").then(response => {
+      logout() {       
+        axios.post("/api/auth/logout").then(response => {
           if (response.data.success) {
             location.reload()
           }

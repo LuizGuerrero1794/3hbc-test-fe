@@ -12,9 +12,6 @@ import { mapState } from 'vuex';
         name: 'App',
         components: {
             Snackbar,
-        },
-        mounted(){
-
-        },
+        }
     }
 </script>

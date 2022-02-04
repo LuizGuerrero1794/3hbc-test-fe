@@ -33,11 +33,6 @@ store.dispatch('me').then(() => {
       routes: route,    
   })
   
-  if(store.state.authenticated)
-    router.push({path: '/'});
-  else
-    router.push({path: '/login'});
-  
   new Vue({
     router,
     store,

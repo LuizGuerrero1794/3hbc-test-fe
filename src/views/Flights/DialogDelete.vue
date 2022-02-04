@@ -51,16 +51,16 @@
             trash () {
                 axios.delete(`/api/flights/${this.item.id}`)
                     .then( (response) => {
-                        console.log(response)
-                        if ( response.data.success )
-                            this.$snackbar('success', response.data.msg);
-                        else
-                            this.$snackbar('error', response.data.msg);
+                        if ( response.data.success ){
+                            alert(response.data.message)
+                            this.close();
+                            this.$emit('load');
+                        }else
+                            alert(response.data.message)
 
                     })
                     .catch( (err) => {
-                        console.log(err)
-                        this.$snackbar('error',err.msg);
+                        alert(err)
                     })
             }
         }
