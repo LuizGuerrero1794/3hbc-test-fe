@@ -2,14 +2,12 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="600px" transition="dialog-bottom-transition">
         <template v-slot:activator="{ on }">
-            <v-btn dark block :color="sistema.apariencia_color_hex" v-on="on">
-            <!-- <v-btn class="black--text" block color="white" v-on="on"> -->
-              CERRAR SESIÓN
-              <v-icon class="ml-2 font-weight-light">mdi-power</v-icon>
+            <v-btn dark icon color="ml-3 primary" v-on="on">
+              <v-icon color="error" class="font-weight-light">mdi-power</v-icon>
             </v-btn>
         </template>
         <v-card>
-            <v-toolbar dark dense :color="sistema.apariencia_color_hex">
+            <v-toolbar dark dense color="primary">
                 <v-toolbar-title class="text-truncate">
                     <v-icon class="mr-2 pb-1">mdi-power</v-icon>
                     <span>CERRAR SESIÓN</span>
@@ -21,7 +19,7 @@
             </v-toolbar>
             <v-card-text>
                 <v-container class="mx-0 px-0 my-0">
-                    <span style="color:black!important">¿ESTAS SEGURO QUE DESEAS CERRAR SESIÓN?</span>
+                    <span class="black--text">¿ESTAS SEGURO QUE DESEAS CERRAR SESIÓN?</span>
                 </v-container>
             </v-card-text>
             <v-card-actions>
@@ -41,26 +39,19 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
+  import axios from 'axios'
+  export default {
+    data: ()  => ({
       dialog: false,
-      sistema: window.Laravel.sistema,
-    };
-  },
-  computed:{
-    // sistema(){
-    //   return this.$store.state.sistema;
-    // }
-  },
-  methods: {
-    cerrarSesion() {
-      this.axios.post("/logout").then(response => {
-        if (response.data.success) {
-          location.reload();
-        }
-      });
+    }),
+    methods: {
+      cerrarSesion() {
+        axios.post("/logout").then(response => {
+          if (response.data.success) {
+            location.reload()
+          }
+        })
+      }
     }
   }
-};
 </script>
